@@ -17,7 +17,4 @@ for word in words_list_utf:
 print(words_list)
 print(words_list_utf)
 print(word_list_decode)
-print( words_list == word_list_decode)
-
-
-
+print(words_list == word_list_decode)

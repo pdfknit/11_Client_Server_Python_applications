@@ -19,3 +19,4 @@ with subprocess.Popen(args2, stdout=subprocess.PIPE) as process:
     for line in process.stdout:
         chardet_result = chardet.detect(line)
         print(line.decode(chardet_result['encoding']))
+
