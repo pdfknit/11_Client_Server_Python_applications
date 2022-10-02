@@ -8,4 +8,3 @@ print(encoding)
 with open('test_file.txt', encoding=encoding) as encoding_file:
     for line in encoding_file:
         print(line)
-

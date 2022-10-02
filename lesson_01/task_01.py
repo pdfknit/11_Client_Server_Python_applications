@@ -2,6 +2,7 @@ word_01_str = 'разработка'
 word_02_str = 'сокет'
 word_03_str = 'декоратор'
 
+
 print(word_01_str, type(word_01_str))
 print(word_02_str, type(word_02_str))
 print(word_03_str, type(word_03_str))
