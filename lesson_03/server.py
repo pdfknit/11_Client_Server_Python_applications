@@ -3,8 +3,10 @@
 import socket
 import sys
 import json
-from constants import *
-from functions import get_message, send_message
+# from constants import *
+from lesson_03.functions import get_message, send_message
+from lesson_03.constants import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, DEFAULT_PORT, \
+    DEFAULT_IP_ADDRESS, CONNECTIONS
 
 
 def process_client_message(message):
