@@ -3,8 +3,8 @@ import sys
 import time
 import socket
 
-from lesson_03.constants import *
-from lesson_03.functions import send_message, get_message
+from project.common.constants import *
+from project.common.utils import send_message, get_message
 
 
 def create_presence_message(account_name='Guest'):

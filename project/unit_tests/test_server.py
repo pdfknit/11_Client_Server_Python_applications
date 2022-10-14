@@ -1,7 +1,7 @@
 import unittest
 
-from lesson_03.constants import TIME, ACTION, PRESENCE, USER, ACCOUNT_NAME, RESPONSE, ERROR
-from lesson_03.server import process_client_message
+from project.common.constants import TIME, ACTION, PRESENCE, USER, ACCOUNT_NAME, RESPONSE, ERROR
+from project.server import process_client_message
 
 
 class TestServer(unittest.TestCase):
