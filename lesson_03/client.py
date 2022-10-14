@@ -4,7 +4,7 @@ import time
 import socket
 
 from lesson_03.constants import *
-from functions import send_message, get_message
+from lesson_03.functions import send_message, get_message
 
 
 def create_presence_message(account_name='Guest'):
@@ -23,9 +23,12 @@ def answer_from_server(message):
         if message[RESPONSE] == 200:
             return '200 : OK'
         else:
+            # print(f'400 : {message[ERROR]}')
             return f'400 : {message[ERROR]}'
+
     except ValueError:
-        print('Wrong message[RESPONSE]')
+        raise ValueError('Wrong message[RESPONSE]')
+        # print('Wrong message[RESPONSE]')
 
 
 def main():
