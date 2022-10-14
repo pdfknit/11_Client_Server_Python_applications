@@ -20,4 +20,4 @@ def write_order_to_json(item, quantity, price, buyer, date):
 
 
 order = ['Вобла', 2, 2300, 'user543', '16.02.2022']
-write_order_to_json(order[0], order[1], order[2], order[3], order[4])
+write_order_to_json(*order)
