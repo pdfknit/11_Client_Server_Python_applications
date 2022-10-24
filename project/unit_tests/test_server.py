@@ -2,8 +2,8 @@ import sys
 import unittest
 sys.path.append('..')
 
-from lesson_03.constants import TIME, ACTION, PRESENCE, USER, ACCOUNT_NAME, RESPONSE, ERROR
-from lesson_03.server import process_client_message
+from common.constants import TIME, ACTION, PRESENCE, USER, ACCOUNT_NAME, RESPONSE, ERROR
+from server import process_client_message
 
 
 class TestServer(unittest.TestCase):
