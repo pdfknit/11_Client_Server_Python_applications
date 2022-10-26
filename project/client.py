@@ -3,13 +3,12 @@ import sys
 import time
 import socket
 
-from project.common.constants import *
-from project.common.utils import send_message, get_message
-
 import logging
 import logs.config.client_log_config
 
 logger = logging.getLogger('client_log')
+from common.constants import *
+from common.functions import send_message, get_message
 
 
 def create_presence_message(account_name='Guest'):

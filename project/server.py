@@ -3,11 +3,9 @@
 import socket
 import sys
 import json
-# from constants import *
-# from common.utils import get_message, send_message
-from project.common.constants import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, DEFAULT_PORT, \
+from common.constants import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, DEFAULT_PORT, \
     DEFAULT_IP_ADDRESS, CONNECTIONS
-from project.common.utils import get_message, send_message
+from common.utils import get_message, send_message
 
 import logging
 import logs.config.server_log_config

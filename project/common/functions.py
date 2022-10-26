@@ -1,7 +1,5 @@
 import json
-import sys
-
-from lesson_03.constants import MAX_LENGTH, ENCODING
+from common.constants import MAX_LENGTH, ENCODING
 
 
 def get_message(client):
@@ -13,7 +11,6 @@ def get_message(client):
             return response
         except ValueError:
             print('ValueError')
-
 
 
 def send_message(sock, message):
