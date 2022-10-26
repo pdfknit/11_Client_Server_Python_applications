@@ -5,7 +5,7 @@ import socket
 # sys.path.append('..')
 
 import logging
-import project.logs.config.client_log_config
+import logs.config.client_log_config
 
 from common.constants import *
 from common.functions import send_message, get_message
