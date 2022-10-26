@@ -6,11 +6,13 @@ import json
 from common.constants import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, DEFAULT_PORT, \
     DEFAULT_IP_ADDRESS, CONNECTIONS
 from common.utils import get_message, send_message
+
 sys.path.append('..')
 import logging
 import logs.config.server_log_config
 
 logger = logging.getLogger('server_log')
+
 
 def process_client_message(message):
     if ACTION in message and message[ACTION] == PRESENCE and TIME in message \
