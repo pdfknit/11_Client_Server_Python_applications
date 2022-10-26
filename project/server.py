@@ -10,10 +10,11 @@ from common.utils import get_message, send_message
 sys.path.append('..')
 import logging
 import logs.config.server_log_config
+from common.decos import Log
 
 logger = logging.getLogger('server_log')
 
-
+@Log(logger)
 def process_client_message(message):
     if ACTION in message and message[ACTION] == PRESENCE and TIME in message \
             and USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
@@ -25,7 +26,7 @@ def process_client_message(message):
         ERROR: 'Bad Request'
     }
 
-
+@Log(logger)
 def main():
     try:
         if '-p' in sys.argv:
