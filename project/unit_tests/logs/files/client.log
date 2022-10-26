@@ -1,0 +1,8 @@
+2022-10-26 12:02:19,157   WARNING      client.py  IndexError - used server_address = 127.0.0.1 server_port = 7777
+2022-10-26 12:02:19,158      INFO      client.py  message_to_server = {'action': 'presence', 'time': 1666774939.1586516, 'user': {'account_name': 'Guest'}}
+2022-10-26 12:02:19,159      INFO      client.py  answer = '200 : OK'
+2022-10-26 12:14:36,867   WARNING      client.py  IndexError - used server_address = 127.0.0.1 server_port = 7777
+2022-10-26 12:14:36,867      INFO      client.py  message_to_server = {'action': 'presence', 'time': 1666775676.8678756, 'user': {'account_name': 'Guest'}}
+2022-10-26 12:14:45,832   WARNING      client.py  IndexError - used server_address = 127.0.0.1 server_port = 7777
+2022-10-26 12:14:45,834      INFO      client.py  message_to_server = {'action': 'presence', 'time': 1666775685.8349447, 'user': {'account_name': 'Guest'}}
+2022-10-26 12:14:45,835      INFO      client.py  answer = '200 : OK'

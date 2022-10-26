@@ -1,0 +1,7 @@
+
+2022-10-14 15:49:56,908      INFO      server.py  process_client_message - RESPONSE: 200
+2022-10-14 15:49:56,908      INFO      server.py  Server is running
+2022-10-14 15:51:39,153      INFO      server.py  process_client_message - RESPONSE: 200
+2022-10-14 15:51:39,153      INFO      server.py  Server is running
+2022-10-14 15:52:32,404      INFO      server.py  process_client_message - RESPONSE: 200
+2022-10-14 15:52:32,404      INFO      server.py  Server is running

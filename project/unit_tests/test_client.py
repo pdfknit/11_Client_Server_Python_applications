@@ -1,7 +1,7 @@
-import unittest
-
+import sys
 sys.path.append('..')
 
+import unittest
 
 from client import create_presence_message, answer_from_server
 from common.constants import TIME, ACTION, PRESENCE, USER, ACCOUNT_NAME, RESPONSE, ERROR

@@ -2,13 +2,15 @@ import json
 import sys
 import time
 import socket
+# sys.path.append('..')
 
 import logging
-import logs.config.client_log_config
+import project.logs.config.client_log_config
 
-logger = logging.getLogger('client_log')
 from common.constants import *
 from common.functions import send_message, get_message
+
+logger = logging.getLogger('client_log')
 
 
 def create_presence_message(account_name='Guest'):
@@ -32,6 +34,7 @@ def answer_from_server(message):
     except ValueError:
         logger.critical(f'answer_from_server - ValueError - Wrong message[RESPONSE]')
         sys.exit(1)
+
 
 def main():
     try:

@@ -1,7 +1,7 @@
 import json
 import sys
 
-from lesson_03.constants import MAX_LENGTH, ENCODING
+from common.constants import MAX_LENGTH, ENCODING
 
 
 def get_message(client):
