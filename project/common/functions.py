@@ -1,7 +1,13 @@
 import json
+import sys
+
 from common.constants import MAX_LENGTH, ENCODING
+from common.decos import Log
 
 
+
+
+@Log()
 def get_message(client):
     encoded_response = client.recv(MAX_LENGTH)
     if isinstance(encoded_response, bytes):
@@ -12,7 +18,7 @@ def get_message(client):
         except ValueError:
             print('ValueError')
 
-
+@Log()
 def send_message(sock, message):
     try:
         js_message = json.dumps(message)

@@ -9,10 +9,11 @@ import logs.config.client_log_config
 
 from common.constants import *
 from common.functions import send_message, get_message
+from common.decos import Log
 
 logger = logging.getLogger('client_log')
 
-
+@Log(logger)
 def create_presence_message(account_name='Guest'):
     message = {
         ACTION: PRESENCE,
@@ -23,7 +24,7 @@ def create_presence_message(account_name='Guest'):
     }
     return message
 
-
+@Log(logger)
 def answer_from_server(message):
     try:
         if message[RESPONSE] == 200:
