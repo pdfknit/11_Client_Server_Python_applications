@@ -3,8 +3,12 @@ import json
 
 def write_order_to_json(item, quantity, price, buyer, date):
     with open('orders.json', 'r', encoding='utf-8') as json_file:
-        order_dict = json.load(json_file)
-        print(order_dict)
+        try:
+            order_dict = json.load(json_file)
+            print(order_dict)
+        except:
+            order_dict = {'orders': []}
+
         new_order = {
             'item': item,
             'quantity': quantity,
