@@ -20,11 +20,11 @@ class Log:
             #или стоило оставить полный путь?
             if self.logger is None:
                 logger_name = module_name.replace('.py', '')
-                print(logger_name)
+                # print(logger_name)
                 self.logger = logging.getLogger(logger_name)
 
-            self.logger.debug(f'{func.__name__} вызвана из {parent_func_name} '
-                              f'в модуле {module_name.split(os.sep)[-1]} с аргументами: {args}; {kwargs}')
+            # self.logger.debug(f'{func.__name__} вызвана из {parent_func_name} '
+            #                   f'в модуле {module_name.split(os.sep)[-1]} с аргументами: {args}; {kwargs}')
 
 
 
