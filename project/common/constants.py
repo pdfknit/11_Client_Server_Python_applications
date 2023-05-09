@@ -1,6 +1,6 @@
 import os
 
-DEFAULT_PORT = 7779
+DEFAULT_PORT = 10000
 
 DEFAULT_IP_ADDRESS = '127.0.0.1'
 CONNECTIONS = 3
@@ -17,3 +17,9 @@ RESPONSE = 'response'
 ERROR = 'error'
 LOGGING_FORMATTER = '%(asctime)8s  %(levelname)8s  %(filename)13s  %(message)s'
 PATH = os.getcwd()
+
+SENDER = 'from'
+DESTINATION = 'to'
+MESSAGE = 'message'
+MESSAGE_TEXT = 'mess_text'
+EXIT = 'exit'
