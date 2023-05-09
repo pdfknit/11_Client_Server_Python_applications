@@ -29,7 +29,7 @@ def process_client_message(message, messages_list, client, clients, names):
             names[message[USER][ACCOUNT_NAME]] = client
             send_message(client, {'response': 200})
         else:
-            response = {'response': 200}
+            response = {'response': 200 }
             response[ERROR] = 'Имя пользователя уже занято.'
             send_message(client, response)
             clients.remove(client)
