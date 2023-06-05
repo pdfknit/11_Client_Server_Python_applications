@@ -23,3 +23,10 @@ DESTINATION = 'to'
 MESSAGE = 'message'
 MESSAGE_TEXT = 'mess_text'
 EXIT = 'exit'
+
+RESPONSE_200 = {RESPONSE: 200}
+# 400
+RESPONSE_400 = {
+            RESPONSE: 400,
+            ERROR: None
+        }
