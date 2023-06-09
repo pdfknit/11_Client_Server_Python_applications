@@ -13,6 +13,14 @@ from common.decos import Log
 from common.metaclasses import ClientMaker
 
 logger = logging.getLogger('client_log')
+sock_lock = threading.Lock()
+
+
+def help(self):
+    print('Поддерживаемые команды:')
+    print('message - отправить сообщение. Кому и текст будет запрошены отдельно.')
+    print('help - вывести подсказки по командам')
+    print('exit - выход из программы')
 
 
 # Класс формировки и отправки сообщений на сервер и взаимодействия с пользователем.
@@ -22,14 +30,12 @@ class ClientSender(threading.Thread, metaclass=ClientMaker):
         self.sock = sock
         super().__init__()
 
-
     def create_exit_message(self):
         return {
             ACTION: EXIT,
             TIME: time.time(),
             ACCOUNT_NAME: self.account_name
         }
-
 
     def create_message(self):
         to = input('Введите получателя сообщения: ')
@@ -42,13 +48,16 @@ class ClientSender(threading.Thread, metaclass=ClientMaker):
             MESSAGE_TEXT: message
         }
         logger.debug(f'Сформирован словарь сообщения: {message_dict}')
-        try:
-            send_message(self.sock, message_dict)
-            logger.info(f'Отправлено сообщение для пользователя {to}')
-        except:
-            logger.critical('Потеряно соединение с сервером.')
-            exit(1)
-
+        with sock_lock:
+            try:
+                send_message(self.sock, message_dict)
+                logger.info(f'Сообщение пользователю {to} отправлено')
+            except OSError as err:
+                if err.errno:
+                    logger.critical('Потеряно соединение с сервером.')
+                    exit(1)
+                else:
+                    logger.error('Не удалось передать сообщение. Таймаут соединения')
 
     def run(self):
         self.help()
@@ -59,28 +68,24 @@ class ClientSender(threading.Thread, metaclass=ClientMaker):
             elif command == 'help':
                 self.help()
             elif command == 'exit':
-                try:
-                    send_message(self.sock, self.create_exit_message())
-                except:
-                    pass
-                print('Завершение соединения.')
-                logger.info('Завершение работы по команде пользователя.')
+                with sock_lock:
+                    try:
+                        send_message(self.sock, self.create_exit_message())
+                    except:
+                        pass
+                    print('Завершение соединения.')
+                    logger.info('Завершение работы по команде пользователя.')
                 # Задержка неоходима, чтобы успело уйти сообщение о выходе
                 time.sleep(0.5)
                 break
+
             else:
-                print('Команда не распознана, попробойте снова. help - вывести поддерживаемые команды.')
-
-
-    def help(self):
-        print('Поддерживаемые команды:')
-        print('message - отправить сообщение. Кому и текст будет запрошены отдельно.')
-        print('help - вывести подсказки по командам')
-        print('exit - выход из программы')
+                print('Команда не распознана, попробойте снова')
+                help()
 
 
 # Класс-приёмник сообщений с сервера. Принимает сообщения, выводит в консоль.
-class ClientReader(threading.Thread , metaclass=ClientMaker):
+class ClientReader(threading.Thread, metaclass=ClientMaker):
     def __init__(self, account_name, sock):
         self.account_name = account_name
         self.sock = sock
@@ -154,7 +159,6 @@ def arg_parser():
 
 
 def main():
-
     # Загружаем параметы коммандной строки
     server_address, server_port, client_name = arg_parser()
 
@@ -189,10 +193,10 @@ def main():
         exit(1)
     else:
         # запускаем клиенский процесс приёма сообщний
-        module_reciver = ClientReader(client_name , transport)
+        module_reciver = ClientReader(client_name, transport)
         module_reciver.daemon = True
         module_reciver.start()
-        module_sender = ClientSender(client_name , transport)
+        module_sender = ClientSender(client_name, transport)
         module_sender.daemon = True
         module_sender.start()
         logger.debug('Запущены процессы')
